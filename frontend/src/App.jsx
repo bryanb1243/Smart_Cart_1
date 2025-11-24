@@ -7,6 +7,7 @@ function App() {
   const [listText, setListText] = useState("");
   const [results, setResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -131,6 +132,101 @@ function App() {
             }}
           />
 
+         {showOnboarding && (
+            <div
+              style={{
+                borderRadius: "16px",
+                padding: "12px 14px",
+                background:
+                  "linear-gradient(135deg, rgba(15,23,42,0.95), rgba(15,23,42,0.8))",
+                border: "1px solid rgba(148,163,184,0.5)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "8px",
+                fontSize: "13px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: "8px",
+                  alignItems: "center",
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    How SmartCart works
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "12px",
+                      color: "#9ca3af",
+                    }}
+                  >
+                    Prototype view using mock prices — perfect for demos.
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowOnboarding(false)}
+                  style={{
+                    border: "none",
+                    background: "transparent",
+                    color: "#9ca3af",
+                    fontSize: "11px",
+                    cursor: "pointer",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Skip for now
+                </button>
+              </div>
+
+              <ol
+                style={{
+                  margin: "4px 0 0",
+                  paddingLeft: "18px",
+                  color: "#d1d5db",
+                }}
+              >
+                <li>Enter your ZIP code and driving radius.</li>
+                <li>Paste your shopping list (one item per line).</li>
+                <li>Click “Find cheapest cart”.</li>
+              </ol>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  marginTop: "4px",
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setShowOnboarding(false)}
+                  style={{
+                    padding: "6px 14px",
+                    borderRadius: "999px",
+                    border: "none",
+                    background:
+                      "linear-gradient(135deg, #22c55e, #16a34a, #15803d)",
+                    color: "#ecfdf5",
+                    fontWeight: 600,
+                    fontSize: "12px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Got it, let me try it
+                </button>
+              </div>
+            </div>
+          )}
           <form
             onSubmit={handleSubmit}
             style={{ display: "flex", flexDirection: "column", gap: "16px" }}
